@@ -17,7 +17,11 @@ var Stopwatch = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (Stopwatch.__proto__ || Object.getPrototypeOf(Stopwatch)).call(this));
 
         _this.state = {
-            times: {},
+            times: {
+                minutes: 0,
+                seconds: 0,
+                miliseconds: 0
+            },
             running: false,
             display: ''
         };
@@ -116,13 +120,13 @@ var Stopwatch = function (_React$Component) {
     return Stopwatch;
 }(React.Component);
 
-pad0(function (value) {
+function pad0(value) {
     var result = value.toString();
     if (result.length < 2) {
-        result = '0' + result;
+        result = "0" + result;
     }
     return result;
-});
+}
 
 var app = React.createElement(Stopwatch, null);
 ReactDOM.render(app, document.getElementById('root'));
