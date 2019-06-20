@@ -80,5 +80,5 @@ pad0(value => {
 });
 
 
-const app = <Stopwatch display={display}/>
+const app = <Stopwatch/>
 ReactDOM.render(app, document.getElementById('root'));
