@@ -18,14 +18,17 @@ class Stopwatch extends React.Component {
             seconds: 0,
             miliseconds: 0
         }});
+        console.log(this.state.times, 'reset before this.print');
         this.print();
+        console.log(this.state.times, 'reset');
     }
 
     print() {
-        this.state.display.innerText = this.format(this.state.times);
+        this.setState({ display: this.format(this.state.times) });
     }
 
     format(times) {
+        console.log(times, 'times');
         return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(Math.floor(times.miliseconds))}`;
     }
 
@@ -33,6 +36,7 @@ class Stopwatch extends React.Component {
         if (!this.state.running) {
             this.setState({ running : true });
             this.watch = setInterval(() => this.step(), 10);
+            console.log(this.watch, 'watch');
         }
     }
 
@@ -57,18 +61,19 @@ class Stopwatch extends React.Component {
     stop() {
         this.setState({ running : false });
         clearInterval(this.watch);
+        console.log(this.watch, 'watch-stop');
     }
 
     render() {
         return (
             <div>
                 <nav className='controls'>
-                    <a href='#' className='button' id='start' onClick={this.start}>Start</a>
-                    <a href='#' className='button' id='stop' onClick={this.stop}>Stop</a>
-                    <a href='#' className='button' id='reset' onClick={this.reset}>Reset</a>
+                    <a href='#' className='button' id='start' onClick={this.start = this.start.bind(this)}>Start</a>
+                    <a href='#' className='button' id='stop' onClick={this.stop = this.stop.bind(this)}>Stop</a>
+                    <a href='#' className='button' id='reset' onClick={this.reset = this.reset.bind(this)}>Reset</a>
                 </nav>
-                <div className='stopwatch'></div>
-                <ul className='results'></ul>
+                <div className='stopwatch'>{ this.state.display }</div>
+                { console.log(this.state.display, 'display')}
             </div>
         );
     }
