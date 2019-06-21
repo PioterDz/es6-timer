@@ -75,13 +75,13 @@ var Stopwatch = function (_React$Component) {
     }, {
         key: 'calculate',
         value: function calculate() {
-            this.setState({ times: this.state.miliseconds += 1 });
+            this.setState({ times: this.state.miliseconds + 1 });
             if (this.state.times.miliseconds >= 100) {
-                this.setState({ times: this.state.seconds += 1 });
+                this.setState({ times: this.state.seconds + 1 });
                 this.setState({ times: this.state.miliseconds = 0 });
             }
             if (this.state.times.seconds >= 60) {
-                this.setState({ times: this.state.minutes += 1 });
+                this.setState({ times: this.state.minutes + 1 });
                 this.setState({ times: this.state.seconds = 0 });
             }
         }
