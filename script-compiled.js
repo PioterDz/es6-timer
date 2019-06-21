@@ -23,7 +23,8 @@ var Stopwatch = function (_React$Component) {
                 miliseconds: 0
             },
             running: false,
-            display: ''
+            display: '',
+            result: []
         };
         return _this;
     }
@@ -34,7 +35,7 @@ var Stopwatch = function (_React$Component) {
             this.setState({ times: {
                     minutes: 0,
                     seconds: 0,
-                    miliseconds: 2
+                    miliseconds: 0
                 } });
             console.log(this.state.times, 'reset before this.print');
             this.print();
@@ -43,12 +44,12 @@ var Stopwatch = function (_React$Component) {
     }, {
         key: 'print',
         value: function print() {
+            console.log(this.state.times, 'print-state.times');
             this.setState({ display: this.format(this.state.times) });
         }
     }, {
         key: 'format',
         value: function format(times) {
-            console.log(times, 'times');
             return pad0(times.minutes) + ':' + pad0(times.seconds) + ':' + pad0(Math.floor(times.miliseconds));
         }
     }, {
@@ -74,14 +75,14 @@ var Stopwatch = function (_React$Component) {
     }, {
         key: 'calculate',
         value: function calculate() {
-            this.state.times.miliseconds += 1;
+            this.setState({ times: this.state.miliseconds += 1 });
             if (this.state.times.miliseconds >= 100) {
-                this.state.times.seconds += 1;
-                this.state.times.miliseconds = 0;
+                this.setState({ times: this.state.seconds += 1 });
+                this.setState({ times: this.state.miliseconds = 0 });
             }
             if (this.state.times.seconds >= 60) {
-                this.state.times.minutes += 1;
-                this.state.times.seconds = 0;
+                this.setState({ times: this.state.minutes += 1 });
+                this.setState({ times: this.state.seconds = 0 });
             }
         }
     }, {

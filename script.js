@@ -8,7 +8,8 @@ class Stopwatch extends React.Component {
                 miliseconds: 0
             },
             running: false,
-            display: ''
+            display: '',
+            result: []
         }
     }
 
@@ -24,12 +25,14 @@ class Stopwatch extends React.Component {
     }
 
     print() {
+        console.log(this.state.times, 'print-state.times');
         this.setState({ display: this.format(this.state.times) });
+        
     }
 
     format(times) {
-        console.log(times, 'times');
         return `${pad0(times.minutes)}:${pad0(times.seconds)}:${pad0(Math.floor(times.miliseconds))}`;
+
     }
 
     start() {
@@ -47,14 +50,14 @@ class Stopwatch extends React.Component {
     }
 
     calculate() {
-        this.state.times.miliseconds += 1;
+        this.setState({ times: this.state.miliseconds += 1 })
         if (this.state.times.miliseconds >= 100) {
-            this.state.times.seconds += 1;
-            this.state.times.miliseconds = 0;
+            this.setState({ times : this.state.seconds += 1 })
+            this.setState({ times : this.state.miliseconds = 0 })
         }
         if (this.state.times.seconds >= 60) {
-            this.state.times.minutes += 1;
-            this.state.times.seconds = 0;
+            this.setState({ times : this.state.minutes += 1 })
+            this.setState({ times : this.state.seconds = 0 })
         }
     }
 
