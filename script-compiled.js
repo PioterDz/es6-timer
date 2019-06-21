@@ -36,15 +36,11 @@ var Stopwatch = function (_React$Component) {
                     minutes: 0,
                     seconds: 0,
                     miliseconds: 0
-                } });
-            console.log(this.state.times, 'reset before this.print');
-            this.print();
-            console.log(this.state.times, 'reset');
+                } }, this.print.bind(this));
         }
     }, {
         key: 'print',
         value: function print() {
-            console.log(this.state.times, 'print-state.times');
             this.setState({ display: this.format(this.state.times) });
         }
     }, {
@@ -62,7 +58,6 @@ var Stopwatch = function (_React$Component) {
                 this.watch = setInterval(function () {
                     return _this2.step();
                 }, 10);
-                console.log(this.watch, 'watch');
             }
         }
     }, {
@@ -96,7 +91,6 @@ var Stopwatch = function (_React$Component) {
         value: function stop() {
             this.setState({ running: false });
             clearInterval(this.watch);
-            console.log(this.watch, 'watch-stop');
         }
     }, {
         key: 'render',
@@ -127,8 +121,7 @@ var Stopwatch = function (_React$Component) {
                     'div',
                     { className: 'stopwatch' },
                     this.state.display
-                ),
-                console.log(this.state.display, 'display')
+                )
             );
         }
     }]);
