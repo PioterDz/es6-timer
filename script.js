@@ -11,6 +11,9 @@ class Stopwatch extends React.Component {
             display: '',
             result: []
         }
+        this.start = this.start.bind(this)
+        this.stop = this.stop.bind(this)
+        this.reset = this.reset.bind(this)
     }
 
     reset() {
@@ -71,9 +74,9 @@ class Stopwatch extends React.Component {
         return (
             <div>
                 <nav className='controls'>
-                    <a href='#' className='button' id='start' onClick={this.start = this.start.bind(this)}>Start</a>
-                    <a href='#' className='button' id='stop' onClick={this.stop = this.stop.bind(this)}>Stop</a>
-                    <a href='#' className='button' id='reset' onClick={this.reset = this.reset.bind(this)}>Reset</a>
+                    <a href='#' className='button' id='start' onClick={this.start}>Start</a>
+                    <a href='#' className='button' id='stop' onClick={this.stop}>Stop</a>
+                    <a href='#' className='button' id='reset' onClick={this.reset}>Reset</a>
                 </nav>
                 <div className='stopwatch'>{ this.state.display }</div>
             </div>

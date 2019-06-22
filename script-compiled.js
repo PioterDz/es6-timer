@@ -26,6 +26,9 @@ var Stopwatch = function (_React$Component) {
             display: '',
             result: []
         };
+        _this.start = _this.start.bind(_this);
+        _this.stop = _this.stop.bind(_this);
+        _this.reset = _this.reset.bind(_this);
         return _this;
     }
 
@@ -103,17 +106,17 @@ var Stopwatch = function (_React$Component) {
                     { className: 'controls' },
                     React.createElement(
                         'a',
-                        { href: '#', className: 'button', id: 'start', onClick: this.start = this.start.bind(this) },
+                        { href: '#', className: 'button', id: 'start', onClick: this.start },
                         'Start'
                     ),
                     React.createElement(
                         'a',
-                        { href: '#', className: 'button', id: 'stop', onClick: this.stop = this.stop.bind(this) },
+                        { href: '#', className: 'button', id: 'stop', onClick: this.stop },
                         'Stop'
                     ),
                     React.createElement(
                         'a',
-                        { href: '#', className: 'button', id: 'reset', onClick: this.reset = this.reset.bind(this) },
+                        { href: '#', className: 'button', id: 'reset', onClick: this.reset },
                         'Reset'
                     )
                 ),
